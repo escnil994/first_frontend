@@ -1,0 +1,61 @@
+<app-header></app-header>
+<app-banner [sliderName]="sliderName"></app-banner>
+<div id="body">
+  <section id="content">
+    <h1 class="subheader">{{project.title}}</h1>
+    <article class="project-detail">
+      <div class="image-wrap-unit">
+        <img src="{{project.image}}" alt="Porject image"/>
+      </div>
+      <div class="date text-secondary font-weight-bold text-capitalize">
+        <span>
+          {{project.date | amDateFormat:'LL' }}
+        </span>
+      </div>
+      <br>
+      <div class="details">
+        <h2 class="text-center">Descripción:</h2>
+        <p>
+          {{project.description}}
+        </p>
+      </div>
+      <div class="details">
+        <h2 class="text-center">Comentarios:</h2>
+        <p>
+          {{project.comments}}
+        </p>
+      </div>
+      <div class="details">
+        <h4 class="text-center">Puedes ver en la siguiente url:</h4>
+        <a class="font-weight-bold text-lg" id="url" href="{{project.url}}">{{project.title}}</a>
+      </div>
+
+
+      <div class="video">
+        <h4>Tambien puedes ver el video donde te doy una pequeña expliación de como está echo:</h4>
+        <div id="video">
+          <youtube-player videoId="{{project.video}}" [width]="375" [height]="200"></youtube-player>
+        </div>
+      </div>
+
+      <ng-container *ngIf="authService.loggedIn()">
+        <div class="m-5">
+          <a class="btn btn-warning m-5" [routerLink]="['/edit-project/', project._id]">Editar este proyecto</a>
+          <a (click)="deleteProject(project._id)" class="btn btn-danger m-5">Eliminar Projecto</a>
+        </div>
+      </ng-container>
+      <div class="clearfix"></div>
+
+    </article>
+
+
+    <app-five-comments></app-five-comments>
+    <app-replies></app-replies>
+
+  </section>
+
+  <app-sidebar2></app-sidebar2>
+</div>
+
+
+<app-footer></app-footer>

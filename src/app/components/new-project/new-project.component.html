@@ -1,0 +1,85 @@
+<app-header></app-header>
+<app-banner [sliderName]="sliderName"></app-banner>
+<div id="body" class="center">
+  <section id="content">
+
+    <div *ngIf="!isEdit"><h1 class="subheader">Creando nuevo proyecto</h1></div>
+    <div *ngIf="isEdit"><h1 class="subheader">Editando {{project.title}}</h1></div>
+
+    <form class="mid-form" #projectForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Titulo del Proyecto:</label>
+        <input type="text" id="title" name="title" #title="ngModel" [(ngModel)]='project.title' required/>
+        <span class="dangerSpan" *ngIf="!title.valid && title.touched">El titulo, no es valido</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="type">Tipo de Proyecto:</label>
+        <input type="text" id="type" name="type" #type="ngModel" [(ngModel)]='project.type' required/>
+        <span class="dangerSpan" *ngIf="!type.valid && type.touched">Debe Especificar el tipo de proyecto que esta guardando</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="description">Descipción:</label>
+        <textarea type="text" id="description" name="description" #description="ngModel"
+                  [(ngModel)]='project.description' required></textarea>
+        <span class="dangerSpan" *ngIf="!description.valid && description.touched">El titulo, no es valido</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="url">Url (opcional):</label>
+        <input type="text" id="url" name="url" #url="ngModel" [(ngModel)]='project.url'>
+        <span class="warningSpan"
+              *ngIf="url.touched && url==null">Aun no has escrito nada, ¿Seguro que dejaras vacio?</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="video">video (opcional):</label>
+        <input type="text" id="video" name="video" #video="ngModel" [(ngModel)]='project.video'>
+        <span class="warningSpan" *ngIf="video.touched && video==null">Aun no has escrito nada, ¿Seguro que dejaras vacio?</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="comments">Comentarios: </label>
+        <textarea type="text" name="comments" id="comments" #comments="ngModel"
+                  [(ngModel)]='project.comments'></textarea>
+        <span class="warningSpan" *ngIf="comments.touched && comments==null">Aun no has escrito nada, ¿Seguro que dejaras vacio?</span>
+      </div>
+
+
+      <div id="image-thumb" *ngIf="isEdit">
+        <img *ngIf="project.image" src="{{ project.image}}" alt="{{project.image}}"/>
+        <img *ngIf="project.image == '' || project.image == null" src="assets/images/default.png" width="75%"
+             alt="{{project.image}}"/>
+      </div>
+      <div class="form-group ">
+    
+          <angular-file-uploader
+           [config]="afuConfig"
+           (ApiResponse)="imageUpload($event)"
+           >
+          </angular-file-uploader>
+     
+      </div>
+
+
+      <div *ngIf="!isEdit" class="form-group">
+        <input type="submit" value="Guardar Proyecto" class="btn btn-primary" [disabled]="projectForm.invalid"/>
+      </div>
+      <div *ngIf="isEdit" class="form-group">
+        <input type="submit" value="Modificar proyecto" class="btn btn-primary" [disabled]="projectForm.invalid"/>
+      </div>
+      <div class="clearfix"></div>
+
+    </form>
+  </section>
+
+  <app-sidebar2></app-sidebar2>
+</div>
+<app-footer></app-footer>

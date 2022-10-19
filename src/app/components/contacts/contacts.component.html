@@ -1,0 +1,46 @@
+<app-header></app-header>
+<app-banner [sliderName]="sliderName"></app-banner>
+<div id="body">
+  <section id="content">
+    <h1 class="subheader contact-left">Contactame</h1>
+
+    <p class="contact-p contact-left">Me puedes encontrar por...</p>
+    <div class="contact-logo">
+
+    </div>
+
+    <div class="container ml-5 mt-5" id="contact-data">
+      <ul>
+        <li class="contact-left contact-p"><span class="mr-1 text-primary">t</span>Twitter: <strong> <a
+          href="{{user.twitter}}" target="_blank"> @escnil994</a></strong></li>
+        <li class="contact-left contact-p"><span class="mr-1 text-primary">f</span> Facebook: <strong> <a
+          href="{{user.facebook}}" target="_blank">@escnil994</a></strong></li>
+        <li class="contact-left contact-p"><span class="mr-1 text-primary">l</span>Linkedin: <strong> <a
+          href="{{user.linkedin}}" target="_blank">@escnil994</a></strong></li>
+        <li class="contact-left contact-p"><span class="mr-1 text-danger">f</span>Instagram: <strong>
+          <a href="https://instagram.com/escnil994" target="_blank"> @escnil994</a></strong>
+        </li>
+        <li class="contact-left contact-p"><span class="mr-1 text-primary">@</span>Email: <strong> <a
+          href="mailto:{{user.email}}" target="_blank">{{user.email}}</a></strong></li>
+        <li class="contact-left contact-p"><span class="mr-1 text-success">d</span>Whatsapp: <strong> <a
+          href="{{user.whatssapp}}" target="_blank">@escnil994</a></strong></li>
+      </ul>
+      <div class="mt-5">
+        <p class="contact-left contact-p">Tambien puedes encontrar algunos de mis proyectos en GitHub aquí:</p>
+        <div id="git_image">
+          <a href="{{user.github}}"><img id="git"
+                                         src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/git_g3ibaw.png"></a>
+        </div>
+        <p class="contact-left contact-p mt-3">Te dejo mas informacion acerca de mi <a
+          [routerLink]="['/about']"><strong>AQUÍ</strong></a></p>
+      </div>
+    </div>
+    <app-five-comments></app-five-comments>
+    <app-replies></app-replies>
+  </section>
+
+  <app-sidebar2></app-sidebar2>
+</div>
+
+
+<app-footer></app-footer>

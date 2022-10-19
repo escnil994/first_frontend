@@ -1,0 +1,78 @@
+<app-header></app-header>
+<app-banner [sliderName]="sliderName"></app-banner>
+<div id="body" class="center">
+  <section id="content">
+
+    <div *ngIf="!isEdit">
+      <h1 class="subheader">Creando nuevo post</h1>
+    </div>
+    <div *ngIf="isEdit">
+      <h1 class="subheader">Editando {{post.title}}</h1>
+    </div>
+
+    <form class="mid-form" #projectForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Titulo del Post:</label>
+        <input type="text" id="title" name="title" #title="ngModel" [(ngModel)]='post.title' required/>
+        <span class="dangerSpan" *ngIf="!title.valid && title.touched">El titulo, no es valido</span>
+      </div>
+      <div class="form-group">
+        <label for="intro">Introduction:</label>
+        <textarea type="text" id="intro" name="intro" #intro="ngModel" [(ngModel)]='post.intro'
+                  required></textarea>
+        <span class="dangerSpan" *ngIf="!intro.valid && intro.touched">Ingresa un introducción</span>
+      </div>
+
+      <div class="form-group">
+        <label for="author">Autor:</label>
+        <input type="text" id="author" name="author" #author="ngModel" [(ngModel)]='post.author' required/>
+        <span class="dangerSpan" *ngIf="!author.valid && author.touched">Debe Especificar quien es el autor de este
+          post</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="content">Contenido:</label>
+        <textarea type="text" id="content" name="content" #content="ngModel" [(ngModel)]='post.content'
+                  required></textarea>
+        <span class="dangerSpan" *ngIf="!content.valid && content.touched">El contenido no es valido</span>
+      </div>
+
+      <div class="form-group">
+        <label for="more">Mas información</label>
+        <input type="text" id="more" name="more" #more="ngModel" [(ngModel)]='post.more'/>
+        <span class="dangerSpan text-success">Campo no obligatorio</span>
+      </div>
+
+
+      <div id="image-thumb" *ngIf="isEdit">
+        <img *ngIf="post.image" src="{{post.image}}" alt="{{post.image}}"/>
+        <img *ngIf="post.image == '' || post.image == null" src="assets/images/default.png" width="75%"
+             alt="{{post.image}}"/>
+      </div>
+
+      <div>
+        <angular-file-uploader
+         [config]="afuConfig"
+         (ApiResponse)="imageUpload($event)"
+         >
+        </angular-file-uploader>
+      </div>
+      
+
+
+      <div *ngIf="!isEdit" class="form-group">
+        <input type="submit" value="Guardar Proyecto" class="btn btn-primary" [disabled]="projectForm.invalid"/>
+      </div>
+      <div *ngIf="isEdit" class="form-group">
+        <input type="submit" value="Modificar proyecto" class="btn btn-primary" [disabled]="projectForm.invalid"/>
+      </div>
+      <div class="clearfix"></div>
+
+    </form>
+  </section>
+
+  <app-sidebar2></app-sidebar2>
+</div>
+<app-footer></app-footer>

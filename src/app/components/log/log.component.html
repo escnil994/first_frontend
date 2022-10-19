@@ -1,0 +1,36 @@
+
+
+
+
+  
+  <div *ngIf="loging" class="logged mt-5">
+    <p>You are already logged in</p>
+
+    <p>redirecting to home...</p>
+
+    <div class="spinner-grow text-danger" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+
+  </div>
+  
+  <div *ngIf="!loging" class="login-register aside-box h-auto w-25 mb-3">
+    <form [formGroup]="myform" #frmLogin="ngForm" class="login-container" (ngSubmit)="onLogin(frmLogin)">
+      <input formControlName="email" type="email" name="email" placeholder="Ingresa tu email" required email>
+      <div *ngIf="(myform.get('email').errors && myform.get('email').dirty)">
+        <p class="text-danger" *ngIf="myform.get('email').hasError('email')">Correo no valido</p>
+        <p class="text-danger" *ngIf="myform.get('email').hasError('required')">No puede ser vacío</p>
+      </div>
+
+      <input formControlName="password" placeholder="Ingresa tu contraseña" type="password" name="password"
+        required />
+      <div *ngIf="(myform.get('password').errors && myform.get('password').dirty)">
+        <p class="text-danger" *ngIf="myform.get('password').hasError('password')">Incorrect <i
+            class="fa fa-sort-amount-asc" aria-hidden="true"></i></p>
+        <p class="text-danger" *ngIf="myform.get('password').hasError('required')">No puede ser vacío</p>
+        <p class="text-danger" *ngIf="myform.get('password').hasError('minlength')">8 caracteres mínimo</p>
+      </div>
+      <input id="input-login" class="mb-3" type="submit" value="Entrar" [disabled]="myform.invalid">
+
+    </form>
+  </div>

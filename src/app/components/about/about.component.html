@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-banner [sliderName]="sliderName"></app-banner>
+<div id="body">
+  <section id="content">
+    <h3 class="subheader contact-left">¿Quién es Nilson @Escnil994?</h3>
+    <div id="perfil">
+      <img class="img-fluid rounded-circle"
+           src="https://res.cloudinary.com/escnil994/image/upload/v1603960750/angular/perfil_vpitmt.png">
+    </div>
+    <div id="date-edit">
+      <span>Nilson  Agosto 2020</span>
+    </div>
+
+    <div id="my-info">
+      <p>Soy <strong>{{user.nationality}}</strong></p>
+      <p>Mi nombre completo es <strong>{{user.name}} {{user.second_name}}</strong></p>
+      <p>Vivo en <strong>San Salvador</strong></p>
+      <p>Tengo <strong>{{user.age}} años</strong></p>
+      <p>Soy estudiante en <strong>{{user.university}}</strong></p>
+      <p>Estudio <strong>{{user.career}}</strong></p>
+      <p>Me apasionan mucho <strong>{{user.passioness}}</strong></p>
+      <p>uso <strong>Windows 10 y Android</strong></p>
+      <p>Me gusta mucho <strong>{{user.to_eat}}</strong></p>
+      <p>Me gusta <strong>{{user.hobbies}}</strong></p>
+      <p>Manejo muy bien el idioma <strong>{{user.idiom_two}}</strong></p>
+      <p>Quiero ser <strong>{{user.want_to}}</strong></p>
+      <p>De chico quise ser <strong>{{user.wanted_to}}</strong> pd:sigo queriendo ser</p>
+      <br><br><br>
+      <p id="resume-go"><strong>contactame: <span [routerLink]="['/contacts']">AQUI</span></strong></p>
+    </div>
+
+
+    <app-five-comments></app-five-comments>
+    <app-replies></app-replies>
+
+  </section>
+
+  <app-sidebar2></app-sidebar2>
+</div>
+
+
+<app-footer></app-footer>

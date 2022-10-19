@@ -1,0 +1,66 @@
+<aside id="sidebar">
+  <ng-container *ngIf="authService.loggedIn()">
+    <div class="sidebar-item">
+      <h3 class="sp">puedes hacer esto</h3>
+      <div id="social" class="aside-box">
+        <div class="twitter">
+          <a class="mas" id="mas" [routerLink]="['/new-project']">Crear Nuevo Proyecto</a>
+        </div>
+        <div class="facebook">
+          <a class="mas" id="mas" [routerLink]="['/new-post']">Crear Nuevo Post</a>
+        </div>
+        <div class="youtube">
+          <a (click)="authService.logout()" id="mas" class="mas">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div id="search" class="sidebar-item">
+    <h3 class="sp">Buscador</h3>
+    <div class="aside-box buscador">
+      <form #searchForm="ngForm" (ngSubmit)="goSearch()">
+        <input name="search" [(ngModel)]="searchProject" id="bnt-look">
+        <input class="icon icon-look" type="submit" value="L">
+      </form>
+    </div>
+  </div>
+  <div id="nav-blog" class="sidebar-item">
+    <h3 class="sp">últimos</h3>
+    <div class="aside-box especial">
+      <div *ngIf="!projects">
+        <div class="spinner-grow" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        
+      </div>
+
+      <article class="project-item-especial" *ngFor="let project of projects">
+        <a [routerLink]="['/more/project', project._id]">
+          <img class="w-25" src="{{project.image}}">
+          <h5 id="last-projects-title">{{project.title}}</h5>
+        </a>
+      </article>
+      <a class="mas" [routerLink]="['/portfolio']"><strong>Ver mas proyectos</strong></a>
+    </div>
+
+  </div>
+
+  <div class="sidebar-item">
+    <h3 class="sp">REDES SOCIALES</h3>
+    <div id="social" class="aside-box">
+      <div class="twitter">
+        <a class="icon twit" href="https://twitter.com/escnil994" target="_blank">t</a>
+      </div>
+      <div class="facebook">
+        <a class="icon face" href="https://facebook.com/escnil994" target="_blank">f</a>
+      </div>
+      <div class="youtube">
+        <a [routerLink]="['/contacts']" class="mas"><strong>ver mas</strong></a>
+      </div>
+    </div>
+ 
+  </div>
+</aside>
+
+<div class="clearfix"></div>

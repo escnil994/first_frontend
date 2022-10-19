@@ -1,0 +1,33 @@
+<div class="loading" *ngIf="!projects">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>  
+</div>
+
+<div class="loading" *ngIf="projects && projects.length == 0">
+  <h3>No hay Ningun proyecto por el momento, pero puedes empezar a crear</h3>
+</div>
+
+<div id="body">
+  <div id="projects" *ngIf="projects">
+    <article class="project-item" *ngFor="let project of projects">
+      <div class="image-wrap">
+        <img *ngIf="project.image"
+             src="{{project.image}}"
+             alt="{{project.title}}"/>
+
+        <img *ngIf="project.image == '' || project.image == null"
+             src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/default_fuz1xo.jpg" width="75%"
+             alt="{{project.title}}"/>
+      </div>
+      <h2>{{project.title}}</h2>
+      <span class="date text-secondary font-weight-bold text-capitalize">
+        {{project.date | amLocale: 'es' | amTimeAgo}}
+      </span>
+      <a class="text-secondary font-weight-bold text-capitalize" [routerLink]="['/more/project', project._id]">Ver
+        mas</a>
+
+      <div class="clearfix"></div>
+    </article>
+  </div>
+</div>

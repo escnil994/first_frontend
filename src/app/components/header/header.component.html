@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+  <div id="logo" routerLink="/blog">
+    <span class="gear">S</span>
+    <h3>ESCNIL994</h3>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" id="ul-header">
+      <li class="nav-item li-header">
+        <a class="nav-link" [routerLink]="['/blog']">Blog</a>
+      </li>
+      <li class="nav-item li-header">
+        <a class="nav-link" [routerLink]="['/portfolio']">mi portafolio</a>
+      </li>
+      <li class="nav-item li-header">
+        <a class="nav-link" [routerLink]="['/about']">Quien es Nilson</a>
+      </li>
+      <li class="nav-item li-header">
+        <a class="nav-link" [routerLink]="['/contacts']">contacto</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="admin">
+  
+    <ng-container class="text-danger" *ngIf="authService.loggedIn()">
+      <h4 class="nav-link text-danger" >Administrador</h4>
+    </ng-container>
+</div>

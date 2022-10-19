@@ -1,0 +1,47 @@
+<app-header></app-header>
+<app-banner [sliderName]="sliderName"></app-banner>
+<div id="body">
+  <section id="content">
+    <h1 class="subheader">{{post.title}}</h1>
+    <article class="project-detail">
+      <div class="image-wrap-unit">
+        <img src="{{post.image}}" alt="Porject image"/>
+      </div>
+      <div class="date text-secondary font-weight-bold text-capitalize">
+        <span>
+          {{post.date | amDateFormat:'LL' }}
+        </span>
+        <span>
+          {{post.author}}
+        </span>
+      </div>
+      <br>
+      <div class="details">
+        <h6>{{post.intro}}</h6>
+        <p>{{post.content}}</p>
+      </div>
+
+      <div class="post-url">
+        <a href="{{post.more}}" target="_blank"><h4>Ver mas</h4></a>
+      </div>
+      <ng-container *ngIf="authService.loggedIn()">
+        <div class="m-5">
+          <a (click)="deletePost(post._id)" class="btn btn-danger m-5">Eliminar Post</a>
+        </div>
+      </ng-container>
+      <div class="clearfix"></div>
+
+    </article>
+
+
+    <app-five-comments></app-five-comments>
+    <app-replies></app-replies>
+
+  </section>
+
+  <app-sidebar2></app-sidebar2>
+</div>
+
+
+<app-footer></app-footer>
+
