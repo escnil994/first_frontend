@@ -5,7 +5,7 @@
     <h1 class="subheader">{{post.title}}</h1>
     <article class="project-detail">
       <div class="image-wrap-unit">
-        <img src="{{post.image}}" alt="Porject image"/>
+        <img [src]="post.image?.secure_url" alt="Post image"/>
       </div>
       <div class="date text-secondary font-weight-bold text-capitalize">
         <span>

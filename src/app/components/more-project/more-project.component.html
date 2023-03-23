@@ -5,7 +5,7 @@
     <h1 class="subheader">{{project.title}}</h1>
     <article class="project-detail">
       <div class="image-wrap-unit">
-        <img src="{{project.image}}" alt="Porject image"/>
+        <img src="{{project.image?.secure_url}}" alt="Porject image" />
       </div>
       <div class="date text-secondary font-weight-bold text-capitalize">
         <span>
@@ -16,7 +16,7 @@
       <div class="details">
         <h2 class="text-center">Descripción:</h2>
         <p>
-          {{project.description}}
+          {{project.content}}
         </p>
       </div>
       <div class="details">
@@ -59,3 +59,4 @@
 
 
 <app-footer></app-footer>
+

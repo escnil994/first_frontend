@@ -7,7 +7,12 @@ export class Post {
     public content: string,
     public more: string,
     public author: string,
-    public image: string,
+    public image:{
+      secure_url:{
+        type: string,
+        default: 'no image'
+      } 
+    },
     public date: any
   ) {
   }

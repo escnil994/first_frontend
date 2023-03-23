@@ -37,7 +37,7 @@
 
       <article class="project-item-especial" *ngFor="let project of projects">
         <a [routerLink]="['/more/project', project._id]">
-          <img class="w-25" src="{{project.image}}">
+          <img class="w-25" src="{{project.image?.secure_url}}">
           <h5 id="last-projects-title">{{project.title}}</h5>
         </a>
       </article>

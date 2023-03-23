@@ -7,8 +7,9 @@
 
 <div>
   <div id="comments" *ngIf="comments">
+
     <article  *ngFor="let comments of comments">
-      <div class="comment-item" *ngIf="comments.approve">
+      <div class="comment-item" *ngIf="comments.allowed">
         <ng-container *ngIf="_authService.loggedIn()">
           <div class="text-right delete-comment-box">
             <a (click)="deletePost(comments._id)" class="delete-comment" title="Eliminar comentario">'</a>

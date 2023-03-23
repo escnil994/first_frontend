@@ -27,6 +27,7 @@ export class GetCommentsComponent implements OnInit {
   ngOnInit(): void {
     this._projectService.getComments().subscribe(response => {
         if (response.comments) {
+          
           this.comments = response.comments;
         }
       },

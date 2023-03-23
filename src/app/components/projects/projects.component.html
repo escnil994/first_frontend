@@ -13,10 +13,10 @@
     <article class="project-item" *ngFor="let project of projects">
       <div class="image-wrap">
         <img *ngIf="project.image"
-             src="{{project.image}}"
+             src="{{project.image.secure_url}}"
              alt="{{project.title}}"/>
 
-        <img *ngIf="project.image == '' || project.image == null"
+        <img *ngIf="project.image.secure_url == '' || project.image.secure_url == null"
              src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/default_fuz1xo.jpg" width="75%"
              alt="{{project.title}}"/>
       </div>

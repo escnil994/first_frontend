@@ -28,7 +28,7 @@ export class MoreProjectComponent implements OnInit {
   ) {
     this.sliderName = 'Mas información del proyecto';
     this.url = API.url;
-    this.project = new Project('', '', '', '', '', '', '', '', '');
+    this.project = new Project('', '', '', '', '', '', '', null, '');
   }
 
   ngOnInit(): void {
