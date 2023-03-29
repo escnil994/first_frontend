@@ -19,7 +19,7 @@
             class="default-user"> {{comments.name}}</h4>
         <div id="content-comment">
           <span id="datesa">
-            {{ comments.date | amDateFormat:'LL' }}
+            {{ comments.date | date}}
           </span>
           <p class="text-left">{{comments.comment}}</p>
           <ng-container *ngIf="_authService.loggedIn()">

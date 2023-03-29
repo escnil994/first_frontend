@@ -22,7 +22,7 @@
       </div>
       <h2>{{project.title}}</h2>
       <span class="date text-secondary font-weight-bold text-capitalize">
-        {{project.date | amLocale: 'es' | amTimeAgo}}
+        {{project.date | date }}
       </span>
       <a class="text-secondary font-weight-bold text-capitalize" [routerLink]="['/more/project', project._id]">Ver
         mas</a>

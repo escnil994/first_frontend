@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {MomentModule} from 'angular2-moment';
 import {AngularFileUploaderModule} from 'angular-file-uploader';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 
@@ -72,7 +71,6 @@ import { LogComponent } from './components/log/log.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MomentModule,
     AngularFileUploaderModule,
     YouTubePlayerModule,
     NgxSpinnerModule

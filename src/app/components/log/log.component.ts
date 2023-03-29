@@ -75,10 +75,15 @@ export class LogComponent implements OnInit {
 
 
   onLogin(form): void {
+
     this.authService.login(form.value).subscribe(res => {
+
+      
+      
       this.router.navigateByUrl('/admin');
       swal('bienvenido', 'Iniciaste Sesión como administrador', 'success');
     }, error => {
+
       swal('Error', 'Datos Incorrectos', 'error');
     });
     this.myform.reset();

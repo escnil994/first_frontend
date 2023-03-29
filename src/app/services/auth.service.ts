@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {API} from './api.service';
-import {UserI} from '../models/user';
-import {JwtResponseI} from '../models/jwt-response';
-import {tap} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API } from './api.service';
+import { UserI } from '../models/user';
+import { JwtResponseI } from '../models/jwt-response';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import swal from 'sweetalert';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,31 +22,35 @@ export class AuthService {
     private router: Router
   ) {
     this.url = API.url;
+
+
+
   }
 
 
   register(user: UserI): Observable<JwtResponseI> {
     return this.http.post<JwtResponseI>(`${this.url}register`,
       user).pipe(tap(
-      (res: JwtResponseI) => {
-        if (res) {
-          // guardar token
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
-        }
-      })
-    );
+        (res: JwtResponseI) => {
+          if (res) {
+            // guardar token
+            this.saveToken(res.accessToken, res.expiresIn);
+          }
+        })
+      );
   }
 
   login(user: UserI): Observable<JwtResponseI> {
-    return this.http.post<JwtResponseI>(`${this.url}login`,
+    return this.http.post<JwtResponseI>(`${this.url}auth/login`,
       user).pipe(tap(
-      (res: JwtResponseI) => {
-        if (res) {
-          // guardar token
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
-        }
-      })
-    );
+        (res: JwtResponseI) => {
+          if (res) {
+
+            // guardar token
+            this.saveToken(res.accessToken, res.expiresIn);
+          }
+        })
+      );
   }
 
 
@@ -56,9 +60,7 @@ export class AuthService {
     this.token = token;
   }
 
-  loggedIn() {
-    return !!localStorage.getItem('ACCESS_TOKEN');
-  }
+
 
   private getToken1(): string {
     if (!this.token) {
@@ -74,4 +76,16 @@ export class AuthService {
     this.router.navigate(['/blog']);
   }
 
+
+
+  loggedIn(): boolean {
+    
+    const url = this.url + 'auth/renew';
+
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('ACCESS_TOKEN') || '');
+
+    this.http.get(`${url}`, { headers });
+    
+return true;
+  }
 }

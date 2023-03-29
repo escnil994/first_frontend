@@ -15,7 +15,7 @@
         <h4><span id="post-title">{{post.title}}</span></h4>
       </div>
       <div id="post-image-item">
-        <img src="{{post.image.secure_url}}" alt="">
+        <img src="{{post.image!.secure_url}}" alt="">
       </div>
       <div id="content-post">
         <h5 id="post-intro">{{post.intro}}</h5>
@@ -24,7 +24,7 @@
         <img class="default-user-autor"
              src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/user_yldyfw.png"
              alt="autor">{{post.author}} <span
-        id="logo-time">P</span> {{post.date | amLocale: 'es' | amTimeAgo}}
+        id="logo-time">P</span> {{post.date | date}}
       </span>
       <div class="clearfix"></div>
 

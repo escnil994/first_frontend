@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import * as html2pdf from 'html2pdf.js';
+
 
 @Component({
   selector: 'app-resume',
@@ -24,10 +24,6 @@ export class ResumeComponent {
 
     const content: Element = document.getElementById('resume');
 
-    html2pdf()
-      .from(content)
-      .set(options)
-      .save();
   }
 
 

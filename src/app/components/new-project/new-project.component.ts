@@ -48,7 +48,7 @@ export class NewProjectComponent implements OnInit {
     private projectService: ProjectService
   ) {
     this.sliderName = 'Completa la siguiente informacion de tu peoyecto';
-    this.project = new Project('', '', '', '', '', '', '', null, null);
+    this.project = new Project(null, '', '', '', '', '', '', null, null);
     this.isEdit = false;
     this.url2 = API.url;
   }
@@ -58,9 +58,11 @@ export class NewProjectComponent implements OnInit {
   }
 
   onSubmit() {
+
+    console.log(this.project);
+    
     this.projectService.createProject(this.project).subscribe(res => {
-      console.log(res);
-      if (res.status === 'success') {
+      if (res.ok) {
         this.status = 'success';
         this.project = res.projects;
 
@@ -74,7 +76,6 @@ export class NewProjectComponent implements OnInit {
 
       }
     }, error => {
-      console.log(error);
       this.status = 'error';
     });
   }

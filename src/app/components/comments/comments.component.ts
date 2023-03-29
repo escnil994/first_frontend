@@ -29,7 +29,6 @@ export class CommentsComponent implements OnInit {
     private _router: Router
   ) {
     this.url = API.url;
-    
 
   }
 

@@ -14,6 +14,9 @@ export class ProjectService {
     this.url = API.url;
   }
 
+  private Headers = new HttpHeaders({
+    'x-token': localStorage.getItem('ACCESS_TOKEN')
+  })
 
 
   //Users
@@ -43,7 +46,7 @@ export class ProjectService {
     let params = JSON.stringify(project);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.http.post(this.url + 'project/new-project', params, {headers: headers});
+    return this.http.post(this.url + 'project/create-new-project', params, {headers});
   }
 
   
@@ -128,7 +131,7 @@ export class ProjectService {
 
   
   search(search): Observable<any> {
-    return this.http.get(this.url + 'search/' + search);
+    return this.http.get(this.url + 'project/search/' + search);
   }
 
 
